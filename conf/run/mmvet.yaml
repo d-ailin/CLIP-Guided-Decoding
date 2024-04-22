@@ -1,0 +1,32 @@
+dataset_name: mmvet
+data_path: /data/ailin/mm-vet/mm-vet/images
+q_type: describe
+q_content: caption
+
+
+mmvet_path: /data/ailin/mm-vet/mm-vet/mm-vet.json
+
+algo:
+  name: 'rsp_sampling'
+  version: 0
+  clip:
+    model_name: 'ViT-SO400M-14-SigLIP-384'
+    model_pretrain: 'webli'
+  sampling:
+    top_k: 5
+    top_p: 1
+    num_return_sequences: 1
+    num_beams: 1
+    temperature: 0.2
+    do_sample: True
+    # max_new_tokens: 500
+    max_new_tokens: 300
+  scoring:
+    alpha: 0.01
+    beta: 1
+    prob_type: lennorm_sum_log
+    max_cand_num: 3
+
+qa_model:
+  model_name: 'llava_v1_5'
+  model_type: '7b'
