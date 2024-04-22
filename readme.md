@@ -14,7 +14,7 @@ run `setup.sh` to install basic dependencies. (Recommend using conda or other vi
 
 Install custom transformers after installing the models:
 ```
-    cd transformers_custom/transformers-4.31.0
+    cd dep/transformers_custom/transformers-4.31.0
     pip install -e .
 ```
 The modifications compared with the original code are in `src/generation/utils.py` to return raw logits.
