@@ -36,10 +36,12 @@ class CLIPModel:
         clip_vis_enc_model.to(device)
         
         with torch.no_grad():
-            text_tokens = clip_vis_enc_tokenizer([text])
+            # text_tokens = clip_vis_enc_tokenizer([text])
+            text_tokens = clip_vis_enc_tokenizer([text], context_length=clip_vis_enc_model.context_length)
+
             image_input = clip_vis_enc_preprocess(image).to(device)
             image_features = clip_vis_enc_model.encode_image(image_input.unsqueeze(0).to(device))
-            text_features = clip_vis_enc_model.encode_text(text_tokens.to(device))
+            text_features = clip_vis_enc_model.encode_text(text_tokens.to(device), )
             image_features = F.normalize(image_features, p=2, dim=-1)
             text_features = F.normalize(text_features, p=2, dim=-1)
             

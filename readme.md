@@ -9,6 +9,17 @@ run `setup.sh` to install basic dependencies. (Recommend using conda or other vi
 
 ### Models Installation
 * LLaVA: [https://github.com/haotian-liu/LLaVA](https://github.com/haotian-liu/LLaVA)
+    <details>
+        <summary>We use LLaVA-1.5 with github version tag v1.1.3</summary>
+
+        ```bash
+            git clone --depth 1 --branch v1.1.3 https://github.com/haotian-liu/LLaVA.git
+            cd LLaVA
+            pip instal -e .
+        ```
+
+    </details>
+
 * InstructBLIP: [https://github.com/salesforce/LAVIS](https://github.com/salesforce/LAVIS)
 * mPLUG-Owl2: [https://github.com/X-PLUG/mPLUG-Owl/tree/main/mPLUG-Owl2](https://github.com/X-PLUG/mPLUG-Owl/tree/main/mPLUG-Owl2)
 
@@ -30,6 +41,7 @@ We provide easy inference code at [inference.ipynb](./inference.ipynb).
 ### For Evaluation
 Note that MySQL and Java are required in evaluation as package pycocoevalcap's requirements.
 
+The COCO samples we tested can be accessed via [link](https://drive.google.com/drive/folders/1r-zZPRRJSv6yoHBzpElGMB3fyALSwNpa?usp=sharing). The json files contains generated responses (with top-k sampling here) with different random seeds. The mscoco id is "image_id" for each item in the json file.
 
 #### COCO Data Structure
 Download data from [here](https://cocodataset.org/#download). You could organize the downloaded data like:
@@ -63,7 +75,7 @@ see `run_main.sh` and parameter arguments in `conf/mscoco_captions.yaml`
 * (Evaluation) When using pycocoeval to compute BLEU/METEOR/ROUGE/SPICE metrics, it will raise an assertation issue as pycocoeval will evaluate all COCO samples but we only need to eval a subset of the dataset. You could remove the assertation and assign `imgIds` with `res.keys()`.
 
 
-## Acknowledge
+## Acknowledgement
 CHAIR metrics implementation: [https://github.com/LisaAnne/Hallucination](https://github.com/LisaAnne/Hallucination)
 
 MMVet Evaluation: [https://github.com/yuweihao/MM-Vet](https://github.com/yuweihao/MM-Vet)
