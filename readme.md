@@ -12,11 +12,9 @@ run `setup.sh` to install basic dependencies. (Recommend using conda or other vi
     <details>
         <summary>We use LLaVA-1.5 with github version tag v1.1.3</summary>
 
-        ```bash
             git clone --depth 1 --branch v1.1.3 https://github.com/haotian-liu/LLaVA.git
             cd LLaVA
             pip instal -e .
-        ```
 
     </details>
 
